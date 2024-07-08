@@ -1,4 +1,5 @@
 grant = User.create!(first_name: "Grant", last_name: "Davis", email: "grantdavis303@gmail.com", password_digest: "dummy123")
+brandon = User.create!(first_name: "Brandon", last_name: "Doza", email: "brandon123@gmail.com", password_digest: "password456")
 
 habit_1 = Habit.create!(name: "Brush Teeth", category: "Dental")
 habit_2 = Habit.create!(name: "Floss Teeth", category: "Dental")
