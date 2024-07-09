@@ -27,7 +27,7 @@ rails s
 
 ### Database Schema
 
-![database_schema](public/Schema.png)
+![database_schema](public/schema.png)
 
 ### Exposed End Points
 
