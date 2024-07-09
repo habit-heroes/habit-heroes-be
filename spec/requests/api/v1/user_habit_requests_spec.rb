@@ -3,15 +3,15 @@ require 'rails_helper'
 RSpec.describe 'User Habit Requests' do
   it "successfully returns all of a user's user_habits" do
     grant = User.create!(first_name: "Grant", last_name: "Davis", email: "grantdavis303@gmail.com", password_digest: "dummy123")
-    habit_1 = Habit.create!(name: "Brush Teeth", category: "Dental")
-    habit_2 = Habit.create!(name: "Floss Teeth", category: "Dental")
+    habit_1 = Habit.create!(name: "Brush Teeth", category: 0)
+    habit_2 = Habit.create!(name: "Floss Teeth", category: 0)
 
     uh_1 = UserHabit.create!(
       user_id: grant.id,
       habit_id: habit_1.id,
       status: 'active',
-      frequency_int: 2,
-      frequency_type: 'day',
+      goal_int: 2,
+      goal_type: 'day',
       started_date: '7/8/2024',
       times_completed: 0,
       days_completed: 0,
@@ -22,8 +22,8 @@ RSpec.describe 'User Habit Requests' do
           user_id: grant.id,
           habit_id: habit_2.id,
           status: 'active',
-          frequency_int: 2,
-          frequency_type: 'day',
+          goal_int: 2,
+          goal_type: 'day',
           started_date: '7/8/2024',
           times_completed: 0,
           days_completed: 0,
@@ -46,8 +46,8 @@ RSpec.describe 'User Habit Requests' do
     expect(parsed_json[:data].first).to have_key (:id)
     expect(parsed_json[:data].first).to have_key (:name)
     expect(parsed_json[:data].first).to have_key (:status)
-    expect(parsed_json[:data].first).to have_key (:frequency_int)
-    expect(parsed_json[:data].first).to have_key (:frequency_type)
+    expect(parsed_json[:data].first).to have_key (:goal_int)
+    expect(parsed_json[:data].first).to have_key (:goal_type)
     expect(parsed_json[:data].first).to have_key (:started_date)
     expect(parsed_json[:data].first).to have_key (:times_completed)
     expect(parsed_json[:data].first).to have_key (:days_completed)
@@ -56,8 +56,8 @@ RSpec.describe 'User Habit Requests' do
     expect(parsed_json[:data].first[:id]).to eq (uh_1.id)
     expect(parsed_json[:data].first[:name]).to eq (habit_1.name)
     expect(parsed_json[:data].first[:status]).to eq (uh_1.status)
-    expect(parsed_json[:data].first[:frequency_int]).to eq (uh_1.frequency_int)
-    expect(parsed_json[:data].first[:frequency_type]).to eq (uh_1.frequency_type)
+    expect(parsed_json[:data].first[:goal_int]).to eq (uh_1.goal_int)
+    expect(parsed_json[:data].first[:goal_type]).to eq (uh_1.goal_type)
     expect(parsed_json[:data].first[:started_date]).to eq (uh_1.started_date)
     expect(parsed_json[:data].first[:times_completed]).to eq (uh_1.times_completed)
     expect(parsed_json[:data].first[:days_completed]).to eq (uh_1.days_completed)
