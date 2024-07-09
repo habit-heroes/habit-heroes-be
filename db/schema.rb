@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_08_162751) do
 
   create_table "habits", force: :cascade do |t|
     t.string "name"
-    t.string "category"
+    t.integer "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -24,9 +24,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_08_162751) do
   create_table "user_habits", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "habit_id", null: false
-    t.string "status"
-    t.integer "frequency_int"
-    t.string "frequency_type"
+    t.integer "status"
+    t.integer "goal_int"
+    t.integer "goal_type"
     t.string "started_date"
     t.integer "times_completed"
     t.integer "days_completed"
