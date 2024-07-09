@@ -120,7 +120,7 @@ Accept: application/json
 </details>
 
 <details>
-  <summary> ND - End Point 4 - Retrieve All Habits </summary>
+  <summary> End Point 4 - Retrieve All Habits </summary>
 
 **Request**
 
@@ -133,6 +133,30 @@ Accept: application/json
 **Response & Response Code** `200`
 
 ```json
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Brush Teeth",
+      "category": "dental"
+    },
+    {
+      "id": 2,
+      "name": "Floss Teeth",
+      "category": "dental"
+    },
+    {
+      "id": 3,
+      "name": "Rinse w/ Mouth Wash",
+      "category": "dental"
+    },
+    {
+      "id": 4,
+      "name": "Sleep 8 Hours",
+      "category": "sleep"
+    }
+  ]
+}
 ```
 </details>
 
@@ -184,8 +208,8 @@ Body
 
 ### Tests
 
-* 34 Total Tests (210 / 210 LOC (100.0%) covered)
-* 5 Request Tests (124 / 124 LOC (100.0%) covered)
+* 36 Total Tests (254 / 254 LOC (100.0%) covered)
+* 7 Request Tests (188 / 188 LOC (100.0%) covered)
 * 29 Model Tests (100 / 100 LOC (100.0%) covered)
 
 **Testing Instructions**
