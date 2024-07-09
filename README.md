@@ -29,7 +29,7 @@ rails s
 
 ![database_schema](public/Schema.png)
 
-### Progress
+### Exposed End Points
 
 <details>
   <summary> End Point 1 - Retrieve a User </summary>
@@ -37,7 +37,7 @@ rails s
 **Request**
 
 ```http
-GET /api/v1/users/:id
+GET /api/v1/users/1
 Content-Type: application/json
 Accept: application/json
 ```
@@ -47,13 +47,12 @@ Accept: application/json
 ```json
 {
   "data": {
-    "id": "1",
+    "id": 1,
     "type": "user",
     "attributes": {
-      "id": "1",
       "first_name": "Grant",
       "last_name": "Davis",
-      "email": "grantdavis303@gmail.com",
+      "email": "grantdavis303@gmail.com"
     }
   }
 }
@@ -66,7 +65,7 @@ Accept: application/json
 **Request**
 
 ```http
-GET /api/v1/users/:id/habits
+GET /api/v1/users/1/habits
 Content-Type: application/json
 Accept: application/json
 ```
@@ -77,30 +76,26 @@ Accept: application/json
 {
   "data": [
     {
-      "id": "1",
-      "type": "user_habit",
-      "attributes": {
-        "id": "1",
-        "status": "active",
-        "goal_int": 2,
-        "goal_type": "day",
-        "started_date": "1/25/24",
-        "times_completed": 1,
-        "days_completed": 4
-      }
+      "id": 1,
+      "name": "Brush Teeth",
+      "status": "active",
+      "goal_int": 2,
+      "goal_type": "day",
+      "started_date": "7/8/2024",
+      "times_completed": 0,
+      "days_completed": 0,
+      "weeks_completed": 0
     },
     {
-      "id": "2",
-      "type": "user_habit",
-      "attributes": {
-        "id": "1",
-        "status": "inactive",
-        "goal_int": 3,
-        "goal_type": "week",
-        "started_date": "1/30/24",
-        "times_completed": 1,
-        "days_completed": 5
-      }
+      "id": 2,
+      "name": "Floss Teeth",
+      "status": "active",
+      "goal_int": 2,
+      "goal_type": "day",
+      "started_date": "7/8/2024",
+      "times_completed": 0,
+      "days_completed": 0,
+      "weeks_completed": 0
     }
   ]
 }
@@ -108,7 +103,7 @@ Accept: application/json
 </details>
 
 <details>
-  <summary> End Point 3 - Retrieve a User's Streaks </summary>
+  <summary> ND - End Point 3 - Retrieve a User's Streaks </summary>
 
 **Request**
 
@@ -125,7 +120,7 @@ Accept: application/json
 </details>
 
 <details>
-  <summary> End Point 4 - Retrieve All Habits </summary>
+  <summary> ND - End Point 4 - Retrieve All Habits </summary>
 
 **Request**
 
@@ -142,7 +137,7 @@ Accept: application/json
 </details>
 
 <details>
-  <summary> End Point 5 - Create a New UserHabit (w/ Body) </summary>
+  <summary> ND - End Point 5 - Create a New UserHabit (w/ Body) </summary>
 
 **Request**
 
@@ -165,7 +160,7 @@ Body
 </details>
 
 <details>
-  <summary> End Point 6 - Update a User's UserHabit (w/ Body) </summary>
+  <summary> ND - End Point 6 - Update a User's UserHabit (w/ Body) </summary>
 
 **Request**
 
@@ -187,13 +182,11 @@ Body
 ```
 </details>
 
-### End Points
-
-### Goals
-
 ### Tests
 
-* 0 Total Tests (0 / 0 LOC (100.0%) covered)
+* 34 Total Tests (210 / 210 LOC (100.0%) covered)
+* 5 Request Tests (124 / 124 LOC (100.0%) covered)
+* 29 Model Tests (100 / 100 LOC (100.0%) covered)
 
 **Testing Instructions**
 
