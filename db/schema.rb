@@ -10,8 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 0) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_09_032835) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "habits", force: :cascade do |t|
+    t.string "name"
+    t.integer "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "streaks", force: :cascade do |t|
+    t.bigint "user_habit_id", null: false
+    t.integer "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_habit_id"], name: "index_streaks_on_user_habit_id"
+  end
+
+  create_table "user_habits", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "habit_id", null: false
+    t.integer "status"
+    t.integer "goal_int"
+    t.integer "goal_type"
+    t.string "started_date"
+    t.integer "times_completed"
+    t.integer "days_completed"
+    t.integer "weeks_completed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["habit_id"], name: "index_user_habits_on_habit_id"
+    t.index ["user_id"], name: "index_user_habits_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "streaks", "user_habits"
+  add_foreign_key "user_habits", "habits"
+  add_foreign_key "user_habits", "users"
 end
