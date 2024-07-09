@@ -116,6 +116,7 @@ Accept: application/json
 **Response & Response Code** `200`
 
 ```json
+Response
 ```
 </details>
 
@@ -173,13 +174,14 @@ Accept: application/json
 Body
 
 {
-  "times_completed": 1
+Body
 }
 ```
 
 **Response & Response Code** `201`
 
 ```json
+Response
 ```
 </details>
 
@@ -196,13 +198,14 @@ Accept: application/json
 Body 
 
 {
-
+  "times_completed": 1
 }
 ```
 
 **Response & Response Code** `200`
 
 ```json
+Response
 ```
 </details>
 
