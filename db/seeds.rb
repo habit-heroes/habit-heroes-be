@@ -12,7 +12,7 @@ habit_8 = Habit.create!(name: "Write", category: 4)
 habit_9 = Habit.create!(name: "Walk 10,000 Steps", category: 5)
 habit_10 = Habit.create!(name: "Lift Weights", category: 5)
 
-UserHabit.create!(
+uh_1 = UserHabit.create!(
   user_id: grant.id,
   habit_id: habit_1.id,
   status: 1,
@@ -20,11 +20,11 @@ UserHabit.create!(
   goal_type: 0,
   started_date: Time.now,
   times_completed: 0,
-  days_completed: 0,
+  days_completed: 10,
   weeks_completed: 0
 )
 
-UserHabit.create!(
+uh_2 = UserHabit.create!(
   user_id: grant.id,
   habit_id: habit_2.id,
   status: 1,
@@ -32,11 +32,11 @@ UserHabit.create!(
   goal_type: 0,
   started_date: Time.now,
   times_completed: 0,
-  days_completed: 0,
+  days_completed: 10,
   weeks_completed: 0
 )
 
-UserHabit.create!(
+uh_3 = UserHabit.create!(
   user_id: grant.id,
   habit_id: habit_10.id,
   status: 1,
@@ -45,5 +45,9 @@ UserHabit.create!(
   started_date: Time.now,
   times_completed: 0,
   days_completed: 0,
-  weeks_completed: 0
+  weeks_completed: 3
 )
+
+Streak.create!(user_habit_id: uh_2.id, streak_type: 1)
+
+Streak.create!(user_habit_id: uh_3.id, streak_type: 0)
