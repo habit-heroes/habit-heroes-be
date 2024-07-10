@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Streak, type: :model do
   describe 'relationships' do
     it { should belong_to(:user_habit) }
+    it { should have_one(:user).through(:user_habit) }
   end
 
   describe 'validations' do
