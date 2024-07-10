@@ -32,8 +32,6 @@ RSpec.describe 'Habit Requests' do
   end
 
   it 'returns an error message if there are no habits' do
-    length = Habit.all.length
-
     get '/api/v1/habits'
 
     expect(response).to_not be_successful
