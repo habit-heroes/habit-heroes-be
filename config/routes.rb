@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get '/users/:id', to: 'users#show'
       get '/users/:id/habits', to: 'user_habits#index'
       get '/habits', to: 'habits#index'
+      post '/users/:id/habits', to: 'user_habits#create'
 
     end
   end
