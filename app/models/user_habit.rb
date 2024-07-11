@@ -22,4 +22,8 @@ class UserHabit < ApplicationRecord
 
   enum status: [:inactive, :active]
   enum goal_type: [:day, :week]
+
+  def streak_eligible?
+    streak.nil? && (days_completed >= 3 || weeks_completed >= 3)
+  end
 end
