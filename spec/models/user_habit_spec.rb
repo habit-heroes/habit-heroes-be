@@ -4,6 +4,7 @@ RSpec.describe UserHabit, type: :model do
   describe 'relationships' do
     it { should belong_to(:user) }
     it { should belong_to(:habit) }
+    it { should have_one(:streak) }
   end
 
   describe 'validations' do
@@ -16,6 +17,8 @@ RSpec.describe UserHabit, type: :model do
     it { should validate_presence_of(:times_completed) }
     it { should validate_presence_of(:days_completed) }
     it { should validate_presence_of(:weeks_completed) }
+    it { should validate_numericality_of(:user_id) }
+    it { should validate_numericality_of(:habit_id) }
     it { should validate_numericality_of(:goal_int) }
     it { should validate_numericality_of(:times_completed) }
     it { should validate_numericality_of(:days_completed) }

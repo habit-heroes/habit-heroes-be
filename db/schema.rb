@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_09_032835) do
 
   create_table "streaks", force: :cascade do |t|
     t.bigint "user_habit_id", null: false
-    t.integer "type"
+    t.integer "streak_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_habit_id"], name: "index_streaks_on_user_habit_id"

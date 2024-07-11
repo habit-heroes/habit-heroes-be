@@ -103,7 +103,7 @@ Accept: application/json
 </details>
 
 <details>
-  <summary> ND - End Point 3 - Retrieve a User's Streaks </summary>
+  <summary> Not Completed - End Point 3 - Retrieve a User's Streaks </summary>
 
 **Request**
 
@@ -162,7 +162,7 @@ Accept: application/json
 </details>
 
 <details>
-  <summary> ND - End Point 5 - Create a New UserHabit (w/ Body) </summary>
+  <summary> End Point 5 - Create a New UserHabit (w/ Body) </summary>
 
 **Request**
 
@@ -170,23 +170,38 @@ Accept: application/json
 POST /api/v1/users/:id/habits
 Content-Type: application/json
 Accept: application/json
+```
 
-Body
+**Body**
 
+```json
 {
-Body
+  "user_id": 1,
+  "habit_id": 4
 }
 ```
 
 **Response & Response Code** `201`
 
 ```json
-Response
+{
+  "data": {
+    "id": 5,
+    "name": "Sleep 8 Hours",
+    "status": "active",
+    "goal_int": 1,
+    "goal_type": "day",
+    "started_date": "2024-07-10 12:12:26 -0600",
+    "times_completed": 0,
+    "days_completed": 0,
+    "weeks_completed": 0
+  }
+}
 ```
 </details>
 
 <details>
-  <summary> ND - End Point 6 - Update a User's UserHabit (w/ Body) </summary>
+  <summary> Not Completed - End Point 6 - Update a User's UserHabit (w/ Body) </summary>
 
 **Request**
 
@@ -194,11 +209,13 @@ Response
 POST /api/v1/users/:id/habits
 Content-Type: application/json
 Accept: application/json
+```
 
-Body 
+**Body**
 
+```json
 {
-  "times_completed": 1
+  "message": "will enter in json data here"
 }
 ```
 
@@ -211,9 +228,9 @@ Response
 
 ### Tests
 
-* 36 Total Tests (254 / 254 LOC (100.0%) covered)
-* 7 Request Tests (188 / 188 LOC (100.0%) covered)
-* 29 Model Tests (100 / 100 LOC (100.0%) covered)
+* 52 Total Tests (446 / 446 LOC (100.0%) covered)
+* 13 Request Tests (360 / 360 LOC (100.0%) covered)
+* 39 Model Tests (129 / 129 LOC (100.0%) covered)
 
 **Testing Instructions**
 
