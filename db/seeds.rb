@@ -51,3 +51,5 @@ uh_3 = UserHabit.create!(
 Streak.create!(user_habit_id: uh_2.id, streak_type: 1)
 
 Streak.create!(user_habit_id: uh_3.id, streak_type: 0)
+
+puts "Seeded Successfully"
