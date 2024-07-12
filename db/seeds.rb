@@ -46,7 +46,17 @@ uh_3 = UserHabit.create!(
   started_date: Time.now,
   times_completed: 0,
   days_completed: 0,
-  weeks_completed: 3
+  weeks_completed: 2
+)
+
+streak_1 = Streak.create!(
+  user_habit_id: uh_1.id,
+  streak_type: 1
+)
+
+streak_2 = Streak.create!(
+  user_habit_id: uh_2.id,
+  streak_type: 1
 )
 
 puts "Seeded Successfully"
