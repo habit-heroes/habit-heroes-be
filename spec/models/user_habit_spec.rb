@@ -29,4 +29,66 @@ RSpec.describe UserHabit, type: :model do
     it { should define_enum_for(:status).with_values([:inactive, :active]) }
     it { should define_enum_for(:goal_type).with_values([:day, :week]) }
   end
+
+  describe 'helper methods' do
+    it '#light_streak_eligible?' do
+      grant = User.create!(first_name: "Grant", last_name: "Davis", email: "grant@gmail.com", password_digest: "dummy123")
+      habit_1 = Habit.create!(name: "Brush Teeth", category: 0)
+      habit_2 = Habit.create!(name: "Floss Teeth", category: 0)
+      uh_1 = UserHabit.create!(
+        user_id: grant.id,
+        habit_id: habit_1.id,
+        status: 1,
+        goal_int: 2,
+        goal_type: 0,
+        started_date: Time.now,
+        times_completed: 0,
+        days_completed: 0,
+        weeks_completed: 0
+      )
+      uh_2 = UserHabit.create!(
+        user_id: grant.id,
+        habit_id: habit_2.id,
+        status: 1,
+        goal_int: 2,
+        goal_type: 0,
+        started_date: Time.now,
+        times_completed: 0,
+        days_completed: 3,
+        weeks_completed: 0
+      )
+      expect(uh_1.light_streak_eligible?).to eq (false)
+      expect(uh_2.light_streak_eligible?).to eq (true)
+    end
+
+    it '#fire_streak_eligible?' do
+      grant = User.create!(first_name: "Grant", last_name: "Davis", email: "grant@gmail.com", password_digest: "dummy123")
+      habit_1 = Habit.create!(name: "Brush Teeth", category: 0)
+      habit_2 = Habit.create!(name: "Floss Teeth", category: 0)
+      uh_1 = UserHabit.create!(
+        user_id: grant.id,
+        habit_id: habit_1.id,
+        status: 1,
+        goal_int: 2,
+        goal_type: 0,
+        started_date: Time.now,
+        times_completed: 0,
+        days_completed: 5,
+        weeks_completed: 0
+      )
+      uh_2 = UserHabit.create!(
+        user_id: grant.id,
+        habit_id: habit_2.id,
+        status: 1,
+        goal_int: 2,
+        goal_type: 0,
+        started_date: Time.now,
+        times_completed: 0,
+        days_completed: 10,
+        weeks_completed: 0
+      )
+      expect(uh_1.fire_streak_eligible?).to eq (false)
+      expect(uh_2.fire_streak_eligible?).to eq (true)
+    end
+  end
 end
