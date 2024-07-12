@@ -5,6 +5,7 @@ class UserHabitSerializer
         {
           "id": user_habit.id,
           "name": user_habit.habit.name,
+          "category": user_habit.habit.category,
           "status": user_habit.status,
           "goal_int": user_habit.goal_int,
           "goal_type": user_habit.goal_type,
@@ -23,6 +24,7 @@ class UserHabitSerializer
         {
           "id": user_habit.id,
           "name": user_habit.habit.name,
+          "category": user_habit.habit.category,
           "status": user_habit.status,
           "goal_int": user_habit.goal_int,
           "goal_type": user_habit.goal_type,
