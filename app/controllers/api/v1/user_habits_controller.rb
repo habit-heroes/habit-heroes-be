@@ -1,5 +1,5 @@
 class Api::V1::UserHabitsController < ApplicationController
-  def index
+  def index # Refactor
     user = User.find_by(id: params[:id])
     if !user.nil?
       if !user.user_habits.empty?
@@ -17,14 +17,12 @@ class Api::V1::UserHabitsController < ApplicationController
     habit = Habit.find_by(id: params[:habit_id])
     if !user.nil? && !habit.nil?
       if !UserHabit.find_by(user_id: user.id, habit_id: habit.id)
-        type = day_or_week(habit)
-        int = determine_frequency(type, habit)
         new_habit = UserHabit.create!(
           user_id: user.id,
           habit_id: habit.id,
           status: 1,
-          goal_int: int,
-          goal_type: type,
+          goal_int: habit.determine_frequency,
+          goal_type: habit.week_type,
           started_date: Time.now,
           times_completed: 0,
           days_completed: 0,
@@ -41,23 +39,23 @@ class Api::V1::UserHabitsController < ApplicationController
     end
   end
 
-  private
-
-  def day_or_week(habit) # Refactor
-    if habit.category == "hobby" || habit.category == "exercise"
-      return 1
+  def update # Refactor
+    user_habit = UserHabit.find_by(id: params[:user_habit_id])
+    if !user_habit.nil?
+      if user_habit.status == "active"
+        if user_habit.times_completed + 1 == user_habit.goal_int
+          user_habit.update_user_habit
+          user_habit.check_user_habit_streak
+          render json: UserHabitSerializer.serialized_json_created(user_habit), status: :ok
+        else
+          user_habit.update!(times_completed: user_habit.times_completed += 1)
+          render json: UserHabitSerializer.serialized_json_created(user_habit), status: :ok
+        end
+      else
+        render json: { error: "The status of this UserHabit is inactive" }, status: :conflict
+      end
     else
-      return 0
-    end
-  end
-
-  def determine_frequency(type, habit) # Refactor
-    if type == 0 && habit.category == "dental"
-      return 2
-    elsif type == 0
-      return 1
-    else
-      return 3
+      render json: { error: "UserHabit not found" }, status: :not_found
     end
   end
 end
