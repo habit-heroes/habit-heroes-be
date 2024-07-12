@@ -6,4 +6,8 @@ class Streak < ApplicationRecord
   validates_numericality_of :user_habit_id
 
   enum streak_type: [:light, :fire]
+
+  def days_or_weeks_completed
+    user_habit.days_completed + user_habit.weeks_completed
+  end
 end
