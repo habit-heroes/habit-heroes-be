@@ -1,5 +1,6 @@
-grant = User.create!(first_name: "Grant", last_name: "Davis", email: "grantdavis303@gmail.com", password_digest: "dummy123")
-brandon = User.create!(first_name: "Brandon", last_name: "Doza", email: "brandon123@gmail.com", password_digest: "password456")
+grant = User.create!(first_name: "Grant", last_name: "Davis", email: "grant@gmail.com", password_digest: "dummy123")
+brandon = User.create!(first_name: "Brandon", last_name: "Doza", email: "brandon@gmail.com", password_digest: "dummy123")
+laurel = User.create!(first_name: "Laurel", last_name: "Bonal", email: "laurel@gmail.com", password_digest: "dummy123")
 
 habit_1 = Habit.create!(name: "Brush Teeth", category: 0)
 habit_2 = Habit.create!(name: "Floss Teeth", category: 0)
@@ -47,9 +48,5 @@ uh_3 = UserHabit.create!(
   days_completed: 0,
   weeks_completed: 3
 )
-
-Streak.create!(user_habit_id: uh_2.id, streak_type: 1)
-
-Streak.create!(user_habit_id: uh_3.id, streak_type: 0)
 
 puts "Seeded Successfully"
