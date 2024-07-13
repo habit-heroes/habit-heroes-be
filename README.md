@@ -52,7 +52,7 @@ Accept: application/json
     "attributes": {
       "first_name": "Grant",
       "last_name": "Davis",
-      "email": "grantdavis303@gmail.com"
+      "email": "grant@gmail.com"
     }
   }
 }
@@ -78,23 +78,25 @@ Accept: application/json
     {
       "id": 1,
       "name": "Brush Teeth",
+      "category": "dental",
       "status": "active",
       "goal_int": 2,
       "goal_type": "day",
-      "started_date": "7/8/2024",
+      "started_date": "2024-07-11 20:27:54 -0600",
       "times_completed": 0,
-      "days_completed": 0,
+      "days_completed": 10,
       "weeks_completed": 0
     },
     {
       "id": 2,
       "name": "Floss Teeth",
+      "category": "dental",
       "status": "active",
       "goal_int": 2,
       "goal_type": "day",
-      "started_date": "7/8/2024",
+      "started_date": "2024-07-11 20:27:54 -0600",
       "times_completed": 0,
-      "days_completed": 0,
+      "days_completed": 10,
       "weeks_completed": 0
     }
   ]
@@ -103,7 +105,7 @@ Accept: application/json
 </details>
 
 <details>
-  <summary> Not Completed - End Point 3 - Retrieve a User's Streaks </summary>
+  <summary> End Point 3 - Retrieve a User's Streaks </summary>
 
 **Request**
 
@@ -116,7 +118,26 @@ Accept: application/json
 **Response & Response Code** `200`
 
 ```json
-Response
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Brush Teeth",
+      "category": "dental",
+      "goal_type": "day",
+      "streak_type": "fire",
+      "days_or_weeks_completed": 10
+    },
+    {
+      "id": 2,
+      "name": "Floss Teeth",
+      "category": "dental",
+      "goal_type": "day",
+      "streak_type": "fire",
+      "days_or_weeks_completed": 10
+    }
+  ]
+}
 ```
 </details>
 
@@ -155,6 +176,36 @@ Accept: application/json
       "id": 4,
       "name": "Sleep 8 Hours",
       "category": "sleep"
+    },
+    {
+      "id": 5,
+      "name": "Wake Up at 7am",
+      "category": "productivity"
+    },
+    {
+      "id": 6,
+      "name": "Drink 100oz of Water",
+      "category": "hydration"
+    },
+    {
+      "id": 7,
+      "name": "Read",
+      "category": "hobby"
+    },
+    {
+      "id": 8,
+      "name": "Write",
+      "category": "hobby"
+    },
+    {
+      "id": 9,
+      "name": "Walk 10,000 Steps",
+      "category": "exercise"
+    },
+    {
+      "id": 10,
+      "name": "Lift Weights",
+      "category": "exercise"
     }
   ]
 }
@@ -177,7 +228,7 @@ Accept: application/json
 ```json
 {
   "user_id": 1,
-  "habit_id": 4
+  "habit_id": 7
 }
 ```
 
@@ -186,12 +237,13 @@ Accept: application/json
 ```json
 {
   "data": {
-    "id": 5,
-    "name": "Sleep 8 Hours",
+    "id": 4,
+    "name": "Read",
+    "category": "hobby",
     "status": "active",
-    "goal_int": 1,
-    "goal_type": "day",
-    "started_date": "2024-07-10 12:12:26 -0600",
+    "goal_int": 3,
+    "goal_type": "week",
+    "started_date": "2024-07-12 17:50:44 -0600",
     "times_completed": 0,
     "days_completed": 0,
     "weeks_completed": 0
@@ -201,12 +253,12 @@ Accept: application/json
 </details>
 
 <details>
-  <summary> Not Completed - End Point 6 - Update a User's UserHabit (w/ Body) </summary>
+  <summary> End Point 6 - Update a User's UserHabit (w/ Body) </summary>
 
 **Request**
 
 ```http
-POST /api/v1/users/:id/habits
+PATCH /api/v1/users/:id/habits
 Content-Type: application/json
 Accept: application/json
 ```
@@ -215,22 +267,35 @@ Accept: application/json
 
 ```json
 {
-  "message": "will enter in json data here"
+  "user_habit_id": 12
 }
 ```
 
 **Response & Response Code** `200`
 
 ```json
-Response
+{
+  "data": {
+    "id": 4,
+    "name": "Read",
+    "category": "hobby",
+    "status": "active",
+    "goal_int": 3,
+    "goal_type": "week",
+    "started_date": "2024-07-12 17:50:44 -0600",
+    "times_completed": 1,
+    "days_completed": 0,
+    "weeks_completed": 0
+  }
+}
 ```
 </details>
 
 ### Tests
 
-* 52 Total Tests (446 / 446 LOC (100.0%) covered)
-* 13 Request Tests (360 / 360 LOC (100.0%) covered)
-* 39 Model Tests (129 / 129 LOC (100.0%) covered)
+* 69 Total Tests (795 / 795 LOC (100.0%) covered)
+* 23 Request Tests (661 / 661 LOC (100.0%) covered)
+* 46 Model Tests (209 / 209 LOC (100.0%) covered)
 
 **Testing Instructions**
 
@@ -246,4 +311,3 @@ No resources used for this project.
 ### Contributors
 
 * Grant Davis | [GitHub](https://github.com/grantdavis303), [LinkedIn](https://www.linkedin.com/in/grantdavis303/)
-* Mel Langhoff | [GitHub](https://github.com/mel-langhoff), [LinkedIn](https://www.linkedin.com/in/melissalanghoff/)
