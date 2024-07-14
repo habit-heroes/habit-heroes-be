@@ -1,6 +1,6 @@
 # Habit Heroes BE
 
-### [Live deployment](https://powerful-scrubland-99007-c4aa236ac7c5.herokuapp.com/)
+### [Live Deployment](https://powerful-scrubland-99007-c4aa236ac7c5.herokuapp.com/)
 
 ### About
 
@@ -27,7 +27,7 @@ rails s
 
 ### Database Schema
 
-![database_schema](public/schema.png)
+![database_schema](public/Schema.png)
 
 ### Exposed End Points
 
@@ -306,7 +306,7 @@ bundle exec rspec spec
 
 ### Resources
 
-No resources used for this project.
+* [GitHub Project Board](https://github.com/orgs/habit-heroes/projects/1)
 
 ### Contributors
 
