@@ -1,8 +1,6 @@
 # Habit Heroes BE
 
 ### [FE Repository](https://github.com/habit-heroes/habit-heroes-fe)
-### [FE Live Deployment](https://main--habithero2401.netlify.app/)
-### [BE Live Deployment](https://powerful-scrubland-99007-c4aa236ac7c5.herokuapp.com/)
 
 ### About
 
